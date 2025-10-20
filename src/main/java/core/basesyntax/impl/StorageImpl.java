@@ -6,7 +6,7 @@ public class StorageImpl<K, V> implements Storage<K, V> {
     private Object[] keys = new Object[10];
     private Object[] values = new Object[10];
     private int size = 0;
-    private final int CAPACITY = 10;
+    private final int capacity = 10;
 
     public void setSize(int size) {
         this.size = size;
@@ -32,8 +32,8 @@ public class StorageImpl<K, V> implements Storage<K, V> {
         return values;
     }
 
-    public int getCAPACITY() {
-        return CAPACITY;
+    public int getCapacity() {
+        return capacity;
     }
 
     private int indexOfKey(K key) {
@@ -52,7 +52,7 @@ public class StorageImpl<K, V> implements Storage<K, V> {
         int index = indexOfKey(key);
         if (index != -1) {
             values[index] = value;
-        } else if (size == CAPACITY) {
+        } else if (size == capacity) {
             throw new RuntimeException("Storage is full");
         } else {
             keys[size] = key;
